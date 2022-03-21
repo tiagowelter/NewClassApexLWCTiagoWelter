@@ -8,6 +8,7 @@ public with sharing class Motorista {
         carro1.velocidadeCarro = 10;
         carro1.estadoPorta = false;
         system.debug('O modelo do carro 1 é '+carro1.modelo);
+        carro1.temGasolina = true;
         system.debug('carro1 '+carro1);
         Boolean aceleraCarro1 = carro1.acelerar(carro1.velocidadeCarro);
         system.debug('Acelerou o carro? '+aceleraCarro1);
@@ -18,6 +19,7 @@ public with sharing class Motorista {
         carro2.ligado = false;
         carro2.velocidadeCarro = 10;
         carro2.estadoPorta = false;
+        carro2.temGasolina = true;
         system.debug('O modelo do carro 2 é '+carro2.modelo);
         system.debug('carro2 '+carro2);
         Boolean aceleraCarro2 = carro2.acelerar(carro2.velocidadeCarro);
@@ -38,6 +40,5 @@ public with sharing class Motorista {
         system.debug('opalaLigado '+opalaLigado);*/
     }
 
-    //DESAFIO - Verificar se o carro tem ou não gasolina para poder acelerar
 
 }
