@@ -32,6 +32,9 @@ public with sharing class ClasseDemonstraEstrutura {//inicio da classe
         system.debug('exemploLista posição 2 = '+exemploLista.get(2));
         system.debug('exemploLista tamanho = '+exemploLista.size());
 
+        ///Adição sem usar o add
+        List<String> exemploLista2 = new List<String>{'Edgar', 'João Paulo', 'Arnaldo'};
+
         List<Integer> exemploListaInteger = new List<Integer>();
         exemploListaInteger.add(null);
         exemploListaInteger.add(1);
