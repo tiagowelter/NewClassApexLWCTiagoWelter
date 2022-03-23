@@ -13,6 +13,7 @@ trigger AccountTrigger on Account (after insert) {
                 taskObj.ActivityDate = System.Today();
                 taskObj.WhatId = aTemp.Id;
                 taskObj.OwnerId = aTemp.OwnerId;
+                //insert taskObj;
                 taskList.add(taskObj);
             }
         }
@@ -20,7 +21,5 @@ trigger AccountTrigger on Account (after insert) {
         if(taskList.size() > 0){
             insert taskList;
         }
-
     }
-
 }
