@@ -1,10 +1,22 @@
 <template>
     <lightning-card title="Lista de oportunidade" icon-name="doctype:audio">
 
+        <div style="text-align: center;">
+            <lightning-button 
+                class="slds-m-arround_medium" 
+                label="Nova compra"
+                onclick={executeNewSale}></lightning-button>
+        </div>
+        <br/>
+        <br/>
+
         <lightning-datatable
             class="datatable"
             data={data}
             columns={columns}
+            hide-checkbox-column
+            show-row-number-column
+            row-number-offset={rowOffset}            
             key-field="Name"></lightning-datatable>
 
     </lightning-card>
