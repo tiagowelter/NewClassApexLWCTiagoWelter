@@ -1,9 +1,12 @@
-import { LightningElement, track } from 'lwc';
-import getAccounts from '@salesforce/apex/AccountController.getAccounts'
+import { LightningElement, track, wire } from 'lwc';
+import getAccounts from '@salesforce/apex/AccountController.getAccounts';
+import { CurrentPageReference } from 'lightning/navigation';
+import {fireEvent} from 'c/pubsub';
 
 export default class SelectAccount extends LightningElement {
 
     @track accountList = [];
+    @wire(CurrentPageReference) pageRef; //carrega as informações da propria página e armazena numa variável
 
     //aqui vamos carregar as contas
     connectedCallback(){
@@ -19,6 +22,7 @@ export default class SelectAccount extends LightningElement {
     handleAccount(event){
         let idAccount = event.detail.value;
         console.log('o id da conta selecionada é',idAccount);
+        fireEvent(this.pageRef, 'selectedAccount', idAccount);
     }
 
 }

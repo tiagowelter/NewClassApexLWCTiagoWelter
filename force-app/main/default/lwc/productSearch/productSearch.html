@@ -1,0 +1,15 @@
+<template>
+    
+    <template if:true={getAccountId}>
+        <lightning-card title="Buscar Produto" icon-name="standard:calibration">
+            <div class="slds-m-horizontal_medium">
+                <!-- O Id da conta selecionada é: {accountId}-->
+                <lightning-input
+                    label="Buscar por nome do produto"
+                    type="search"
+                    onchange={handleSearch}></lightning-input>
+            </div>
+        </lightning-card>    
+    </template>
+        
+</template>
