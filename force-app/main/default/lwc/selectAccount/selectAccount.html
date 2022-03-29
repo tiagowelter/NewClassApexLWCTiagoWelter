@@ -1,0 +1,15 @@
+<template>
+
+    <lightning-card title="Selecione o cliente" icon-name="custom:custom63">
+
+        <div class="slds-m-horizontal_medium">
+            <lightning-combobox 
+                name="account"
+                label="Cliente"
+                options={accountList}
+                onchange={handleAccount}></lightning-combobox>
+        </div>
+
+    </lightning-card>
+    
+</template>
