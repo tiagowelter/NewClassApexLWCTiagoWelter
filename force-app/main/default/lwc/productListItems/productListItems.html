@@ -1,5 +1,4 @@
 <template>
-
     <template if:true={getAccountId}>
         <div class="slds-card slds-p-arround_x_small">
             <lightning-card title="Lista de produtos" icon-name="custom:custom60">        
@@ -12,8 +11,10 @@
                                     key={cTemp.Id}
                                     padding="arround-small">
     
+                                    <!-- Aqui chamamos o sub componente -->
                                     <c-product-list-items-card
                                         product={cTemp}
+                                        onselected={handleProductSelected}
                                         class="slds-m-arround_x-small"     
                                     ></c-product-list-items-card>
                                     
@@ -21,10 +22,17 @@
                             </template>
                         </lightning-layout>
                     </div>
+                    <br/>
+                    <hr/>
+                    <!-- Aqui eu chamo o componente da paginação-->
+                    <c-paginator 
+                        page-number={pageNumber}
+                        page-size={productsObj.tamanhoDaPagina}
+                        total-item-count={productsObj.totalItems}
+                        onprevious={handlePreviousPage}
+                        onnext={handleNextPage}></c-paginator>
                 </div>        
             </lightning-card>
-        </div>
-        
-    </template>
-    
+        </div>        
+    </template>    
 </template>

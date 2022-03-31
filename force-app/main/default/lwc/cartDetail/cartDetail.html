@@ -1,0 +1,84 @@
+<template>
+    <template if:true={getAccountId}>
+        <lightning-card title="Detalhes do carrinho" icon-name="custom:custom64">
+            <div class="slds-m-horizontal_medium">
+                <table>
+                    <thead>
+                        <th>Produto</th>
+                        <th>Preço Unitário</th>
+                        <th>Quantidade</th>
+                    </thead>
+                    <tbody>
+                        <template for:each={products} for:item="cTemp" for:index="productPosition">
+                            <tr key={cTemp.id}>
+                                <td>
+                                    <p class="slsds-text-title">{cTemp.nome}</p>
+                                </td>
+                                <td>                                    
+                                    <lightning-input
+                                        type="currency"
+                                        min="0"
+                                        value={cTemp.preco}
+                                        aria-rowindex={productPosition}
+                                        class="slds-m-bottom_small slds-text-title"
+                                        onchange={handleProductPrice}></lightning-input>
+                                </td>
+                                <td>
+                                    <div style="padding-left: 10px; padding-right:10px;">
+                                        <lightning-input
+                                        type="number"
+                                        min="1"
+                                        value={cTemp.quantidade}
+                                        aria-rowindex={productPosition}
+                                        class="slds-m-bottom_small slds-text-title"
+                                        onchange={handleQuantityPrice}></lightning-input>
+                                    </div>
+                                </td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+                <hr/>
+                <div class="slds-m-arround_medium slsds-p-top_medium slds-p-left_medium" style="text-align: right;">
+                    <b>Valor Total: </b>
+                    <lightning-formatted-number
+                        format-style="currency"
+                        currency-code="BRL"
+                        value={amountTotal}
+                        maximum-fraction-digits="2"></lightning-formatted-number>
+                </div>
+
+                <div class="slds-m-arround_medium slds-p-left_medium">
+                    <lightning-input
+                        type="text"
+                        name="opportunityName"
+                        label="Nome da oportunidade de venda"
+                        onchange={handleOppName}></lightning-input>
+
+                    <lightning-input
+                        type="date"
+                        name="opportunityCloseDate"
+                        label="Informe a data de fechamento"
+                        onchange={handleOppDate}></lightning-input>
+                </div>
+                <template if:true={getIsEnabledSave}>
+                    <div style="text-align: center;">
+                        <br/><br/>
+                        <lightning-button
+                            variant="brand"
+                            label="Salvar"
+                            onclick={openModal}></lightning-button>
+                    </div>
+                </template>
+                <template if:true={getOpenModal}>
+                    <c-cart-confirmation
+                        products={products}
+                        nameopp={opportunityName}
+                        dateopp={opportunityDate}
+                        idaconta={accountId}
+                        amountopp={amountTotal}></c-cart-confirmation>
+                </template>
+            </div>
+        </lightning-card>    
+    </template>
+</template>

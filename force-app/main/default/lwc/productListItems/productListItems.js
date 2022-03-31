@@ -41,4 +41,19 @@ export default class ProductListItems extends LightningElement {
         });
     }
 
+    handleProductSelected(event){
+        console.log('Capturou o evento do componente filho', event.detail);
+        fireEvent(this.pageRef, 'selectedProduct', event.detail);
+    }
+
+    handlePreviousPage(){
+        this.pageNumber = this.pageNumber -1;
+        this.getProductsJS();
+    }
+
+    handleNextPage(){
+        this.pageNumber = this.pageNumber +1;
+        this.getProductsJS();
+    }
+
 }
