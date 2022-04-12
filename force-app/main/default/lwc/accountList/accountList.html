@@ -1,0 +1,36 @@
+<template>
+    <div class="slds-card slds-p-arround_x_small">
+        <lightning-card title="Lista de clientes" icon-name="custom:custom60">        
+            <div class="slds-m-horizontal_medium">
+                <div class="c-container">
+                    <lightning-layout multiple-rows>
+                        <template for:each={accountObj.allDatas} for:item="cTemp">
+                            <lightning-layout-item 
+                                size="4"
+                                key={cTemp.Id}
+                                padding="arround-small">
+
+                                <!-- Aqui chamamos o sub componente -->
+                                <c-account-list-card
+                                    account={cTemp}
+                                    onselected={handleAccountSelected}
+                                    class="slds-m-arround_x-small"     
+                                ></c-account-list-card>
+                                
+                            </lightning-layout-item>
+                        </template>
+                    </lightning-layout>
+                </div>
+                <br/>
+                <hr/>
+                <!-- Aqui eu chamo o componente da paginação-->
+                <c-paginator 
+                    page-number={pageNumber}
+                    page-size={accountObj.tamanhoDaPagina}
+                    total-item-count={accountObj.totalItems}
+                    onprevious={handlePreviousPage}
+                    onnext={handleNextPage}></c-paginator>
+            </div>        
+        </lightning-card>
+    </div>        
+</template>
